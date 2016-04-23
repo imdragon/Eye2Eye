@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -14,12 +15,11 @@ public class tinker {
 		// storing color values here
 		int[][] imgPixels;
 
-// just checking permissions
+		// just checking permissions
 		boolean bool = file.canExecute();
 		boolean bool2 = file.getAbsoluteFile().exists();
 		System.out.println("Can I read this file? " + bool);
 		System.out.println("Does file exist? " + bool2);
-
 
 		try {
 			img = ImageIO.read(file);
@@ -29,19 +29,19 @@ public class tinker {
 		}
 
 		System.out.println("The height is: " + img.getHeight() + ", and the width is: " + img.getWidth());
-		System.out.println(getRGB(img).toString());
+		// System.out.println(getRGB(img).toString());
+
 		imgPixels = getRGB(img);
 		for (int r = 0; r < imgPixels.length; r++) {
 			for (int c = 0; c < imgPixels[r].length; c++) {
-//				System.out.println("Pixel at:" +r+ ""+imgPixels[r] + ", Pixel at: "+ c + imgPixels[c]);
-				System.out.println("Pixel at: "+r+", "+c+imgPixels[r][c]);
-
+//				System.out.println("Pixel at:" + r + "" + imgPixels[r] + ", Pixel at: " + c + imgPixels[c]);
+				System.out.println(Arrays.toString(imgPixels[r]));
+//				System.out.println("Pixel at: " + r + ", " + c + imgPixels[r][c]);
 			}
 		}
-
 	}
 
-// extract pixels from picture
+	// extract pixels from picture
 	private static int[][] getRGB(BufferedImage image) {
 		int width = image.getWidth();
 		int height = image.getHeight();
@@ -62,4 +62,3 @@ public class tinker {
 
 	}
 }
-
